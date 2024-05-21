@@ -1,0 +1,44 @@
+@import "./styles/reset.css";
+@import "./styles/header.css";
+@import "./styles/preloader.css";
+@import "./styles/main.css";
+@import "./styles/card.css";
+
+
+:root{
+    --main-color: #04145c;
+    --secondory: #53699e;
+    --primary: #53699e;
+    --accent: #53699e;
+    --bage: #000000;
+    --last: #312c4d;
+    --light: #ffffff;
+    --webkit-gradient:-webkit-linear-gradient(90deg, #d05daf,#6451ae,#575df9);/* Chrome 10-25, Safari 5.1-6 */
+    --gradient:  linear-gradient(90deg, #d05daf,#6451ae,#575df9);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+body{
+    background: var(--webkit-gradient);
+    background: var(--gradient);
+    font-family: "poppins" , sans-serif;
+}
+
+@font-face {
+    font-family: "poppins";
+    font-weight: bold;
+    src: url("./assets/fonts/bold.woff")format('woff');
+}
+@font-face {
+    font-family: "poppins";
+    font-weight: normal;
+    src: url("./assets/fonts/regular.woff")format('woff');
+}
+@font-face {
+    font-family: "poppins";
+    font-weight: 600;
+    src: url("./assets/fonts/medium.woff")format('woff');
+}@font-face {
+    font-family: "poppins";
+    font-weight: 700;
+    src: url("./assets/fonts/semiBold.woff")format('woff');
+}
+
