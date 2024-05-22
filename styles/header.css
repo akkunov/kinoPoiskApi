@@ -5,6 +5,7 @@
     /*background-color: black;*/
     position: sticky;
     top: 0;
+    box-shadow: 0 16.5px 12.5px -7px var(--gradient);;
 }
 
 .header--container{

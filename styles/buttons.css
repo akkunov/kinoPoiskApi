@@ -1,0 +1,34 @@
+.scroll-btn{
+    background-color: var(--primary);
+    border: none;
+    padding: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    &:hover{
+         background-color: var(--accent);
+     }
+    top: 17rem;
+
+}
+.scroll-btn svg *{
+    stroke: var(--light);
+}
+
+.scroll-btn.right{
+    z-index: 22;
+    position: absolute;
+    right: 1rem;
+}
+.scroll-btn.left{
+    z-index: 22;
+    position: absolute;
+    left: 1rem;
+}
+
+
+@media (max-width: 625px) {
+    .scroll-btn{
+        top: 12rem;
+    }
+}

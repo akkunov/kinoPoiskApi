@@ -3,18 +3,31 @@
 @import "./styles/preloader.css";
 @import "./styles/main.css";
 @import "./styles/card.css";
+@import "./styles/premirs.css";
+@import "./styles/buttons.css";
+@import "./styles/release.css";
 
 
 :root{
+    /*colors*/
     --main-color: #04145c;
     --secondory: #53699e;
-    --primary: #53699e;
+    --primary: #467ef6;
     --accent: #53699e;
     --bage: #000000;
     --last: #312c4d;
     --light: #ffffff;
+
+    /*gradients*/
     --webkit-gradient:-webkit-linear-gradient(90deg, #d05daf,#6451ae,#575df9);/* Chrome 10-25, Safari 5.1-6 */
     --gradient:  linear-gradient(90deg, #d05daf,#6451ae,#575df9);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /*font-size*/
+    --s:1.4rem;
+    --m: 1.8rem;
+    --x: 2.4rem;
+    --xl: 3.6rem;
+
 }
 body{
     background: var(--webkit-gradient);

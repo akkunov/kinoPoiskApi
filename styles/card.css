@@ -1,13 +1,14 @@
 
 .card{
-    width: 24rem;
+    width: 16rem;
     box-sizing: border-box;
     position: relative;
 }
 .cover__inner{
+    user-select: none;
     cursor: pointer;
-    width: 24rem;
-    height: 36rem;
+    width: 16rem;
+    height: 22rem;
     position: relative;
 }
 .card__image{
@@ -52,56 +53,45 @@
 .card__rating{
     display: inline-flex;
     position: absolute;
-    font-size: 1.4rem;
-    width: 3rem;
-    height: 3rem;
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
     align-items: center;
     text-align: center;
     justify-content: center;
     border-radius: 50%;
     top: 1rem;
-    left: 2rem;
+    left: 1rem;
     background-color: var(--primary);
     color: var(--light);
 }
 
-@media (max-width: 855px) {
-    .card{
-        width: 18rem;
-    }
-    .cover__inner{
-        width: 18rem;
-        height: 28rem;
-    }
-    .card__cover{
-        opacity: .0;
-
-    }
-
-    .card__title{
-        font-size: 1.2rem;
-        line-height: 2rem;
-    }
-
-    .card__rating{
-        font-size: 1rem;
-        letter-spacing: .2rem;
-    }
-
+.card__like-btn{
+    position: absolute;
+    z-index: 100;
+    top: 1rem;
+    right: .6rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
-
-
-@media (max-width: 400px) {
+.card__like-btn svg *{
+    transition: background-color 300ms ease;
+    stroke: #ff0000;
+}
+.like-icon.liked path {
+    fill: #F24E1E;
+}
+@media (max-width: 625px) {
     .card{
-        width: 14rem;
+        width: 12rem;
     }
     .cover__inner{
-        width: 14rem;
-        height: 22rem;
+        width: 12rem;
+        height: 18rem;
     }
     .card__title{
         font-size: 1rem;
-        line-height: 2rem;
     }
 
     .card__rating{
