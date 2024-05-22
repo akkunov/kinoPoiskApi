@@ -165,11 +165,17 @@ document.addEventListener('DOMContentLoaded', function (){
 
     // Главная функция которая всё запускает
     function main(){
-        let data = LocalStorage.getItem('films');
-        getPremierMovies().then(data => displayMovies(data.items, premiersMovieContent));
-        displayMovies(data?.items, expectedMoviesContent);
-        getBestMovies().then(data => displayMovies(data.films, bestMoviesContent))
-        getReleaseMovies().then(data => displayMovies(data.releases, releaseMovieContent))
+        Promise.allSettled([getPremierMovies(),getBestMovies(), getReleaseMovies()])
+            .then(data => {
+                data.forEach(data => {
+                    displayMovies(data.value.items, premiersMovieContent);
+                    displayMovies(data.value.items, expectedMoviesContent);
+                    displayMovies(data.value.films, bestMoviesContent);
+                    displayMovies(data.value.releases, releaseMovieContent);
+                })
+
+            })
+            .catch(error => console.log(error))
         displayChosenMovies(chosenData, chosenMoviesContent);
     }
 
