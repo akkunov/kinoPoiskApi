@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function (){
     function main(){
         let data = LocalStorage.getItem('films');
         getPremierMovies().then(data => displayMovies(data.items, premiersMovieContent));
-        displayMovies(data.items, expectedMoviesContent);
+        displayMovies(data?.items, expectedMoviesContent);
         getBestMovies().then(data => displayMovies(data.films, bestMoviesContent))
         getReleaseMovies().then(data => displayMovies(data.releases, releaseMovieContent))
         console.log(chosenData)
