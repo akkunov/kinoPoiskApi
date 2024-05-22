@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function (){
             }
 
             const responseData = await response.json();
-            console.log(responseData)
             return responseData;
         }catch (e){
             return  e
@@ -87,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function (){
                 return
             }
             const responseData = await response.json()
-            console.log(responseData)
             return responseData;
         }catch (e){
             return  e
@@ -102,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function (){
                 return
             }
             const responseData = await response.json();
-            console.log(responseData)
             return responseData;
         }catch (e){
             return  e
@@ -173,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function (){
         displayMovies(data?.items, expectedMoviesContent);
         getBestMovies().then(data => displayMovies(data.films, bestMoviesContent))
         getReleaseMovies().then(data => displayMovies(data.releases, releaseMovieContent))
-        console.log(chosenData)
         displayChosenMovies(chosenData, chosenMoviesContent);
     }
 

@@ -20,6 +20,10 @@
     object-fit: cover;
     position: relative;
 }
+.card__image:hover{
+    border-radius: 1rem;
+    outline: var(--primary) 1rem solid;
+}
 .card__cover{
     position: absolute;
     top: 0;
@@ -34,6 +38,8 @@
 
 .card__cover:hover{
     opacity: 0;
+
+
 }
 
 .card__title{
