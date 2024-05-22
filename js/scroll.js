@@ -1,10 +1,12 @@
+
+// скроллит контет в лево
 export function handleScrollLeft(e, content){
     content.scrollBy({
         left: -content.clientWidth,
         behavior: 'smooth'
     });
 };
-
+// скроллит контет в право
 export function handleScrollRight(e, content){
     content.scrollBy({
         left: content.clientWidth,
@@ -12,6 +14,7 @@ export function handleScrollRight(e, content){
     });
 };
 
+// скролл по тачу и по движению мышки
 export function mouseAndTouchScroll(content){
     let isDown = false;
     let startX;
@@ -60,6 +63,7 @@ export function mouseAndTouchScroll(content){
     });
 }
 
+// сделал просто чтобы уменьишть код
 export function timeKillerFunction(content, leftClass,rightClass, elementClass){
     document.querySelector(`${leftClass}${elementClass}`)
         .addEventListener('click',(e) =>  handleScrollLeft(e,content));

@@ -3,23 +3,26 @@ import {timeKillerFunction} from "./js/scroll.js";
 import {LocalStorage} from "./js/service.js";
 
 document.addEventListener('DOMContentLoaded', function (){
+    // получаю здесь все контейнеры дома которые мне нужны
     const premiersMovieContent = document.querySelector('.premier__movies--content');
     const releaseMovieContent = document.querySelector('.release__movies--content');
     const bestMoviesContent = document.querySelector('.best__movies--content');
     const expectedMoviesContent = document.querySelector('.expected__movies--content');
     const chosenMoviesContent = document.querySelector('.chosen__movies--content');
-
+    // вытаскиваю из локасораджа избранные данные
     let chosenData = LocalStorage.getItem('chosen') || []
-
     timeKillerFunction(premiersMovieContent, '.left', '.right', '.premiers__movies-btn');
+
+    // добавляю скролл по кнопке так и по тачу и движению мыши
     timeKillerFunction(expectedMoviesContent, '.left', '.right', '.expected__movies-btn');
     timeKillerFunction(bestMoviesContent, '.left', '.right', '.best--movies-btn');
     timeKillerFunction(releaseMovieContent, '.left', '.right', '.release__movies-btn');
     timeKillerFunction(chosenMoviesContent, '.left', '.right', '.chosen__movies-btn');
 
+    // основные события по нажатию кнопки
     function handleLike(e,movie){
+        // этот блок спрева ищет есть ли .like-icon.liked  и если есть то удаляет го из массива
         const likedClass = e.currentTarget.querySelector('.like-icon.liked');
-
         if (likedClass) {
             chosenData = chosenData.filter(items => {
                 if(items.kinopoiskId) return  items.kinopoiskId !== movie.kinopoiskId
@@ -32,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function (){
             displayMovies(chosenData, chosenMoviesContent);
             return;
         }
+
+        // этот блок добавляет в массив chosenData
         const data = findInChosen(movie)
         const likeIcon = e.currentTarget.querySelector('.like-icon');
         likeIcon.classList.toggle('liked');
@@ -39,13 +44,14 @@ document.addEventListener('DOMContentLoaded', function (){
             alert('у вас уже в избарнных есть такой фильм')
             return
         }
-
         movie.liked= true
         chosenData.push(movie);
         LocalStorage.setItem('chosen', chosenData);
         chosenMoviesContent.innerHTML = ``;
         displayMovies(chosenData, chosenMoviesContent);
     }
+
+    // вспомогательная функиця которая находит есть такой фильм в избранных
     function findInChosen(movie){
         const data  = chosenData.find(items => {
             if(items.kinopoiskId) return  items.kinopoiskId == movie.kinopoiskId
@@ -55,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function (){
 
         return data || null
     }
+
+    // получение примьерок
     async function getPremierMovies(){
         try {
             const response  = await Http.getPremiers({year:2024, month:"MARCH"})
@@ -70,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function (){
             return  e
         }
     }
+    // получение цифорого релиза
     async function getReleaseMovies (){
         try {
             const response  = await Http.getReleases({year:2024, month:"MARCH"})
@@ -84,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function (){
             return  e
         }
     }
+    // получение лучших фильм
     async function getBestMovies(){
         try {
             const response  = await Http.getBestMovies({year:2024, month:"MARCH"})
@@ -99,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function (){
         }
     }
 
-
+    // отабражение фиьмов
     function displayMovies (movies=[], content) {
         movies.forEach(movie => {
             const card = document.createElement('div');
@@ -127,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function (){
             card.querySelector('.card__like-btn')?.addEventListener('click', (e) => handleLike(e,movie));
         })
     }
+    // отабражение фиьмов в избранных тут немного другой подход
     function displayChosenMovies (movies=[], content) {
         movies.forEach(movie => {
             const card = document.createElement('div');
@@ -155,18 +166,13 @@ document.addEventListener('DOMContentLoaded', function (){
         })
     }
 
-
-
-
+    // Главная функция которая всё запускает
     function main(){
         let data = LocalStorage.getItem('films');
         getPremierMovies().then(data => displayMovies(data.items, premiersMovieContent));
-        // displayMovies(data.items, premiersMovieContent);
         displayMovies(data.items, expectedMoviesContent);
         getBestMovies().then(data => displayMovies(data.films, bestMoviesContent))
-        // displayMovies(data.items, bestMoviesContent);
         getReleaseMovies().then(data => displayMovies(data.releases, releaseMovieContent))
-        // displayMovies(data.items, releaseMovieContent);
         console.log(chosenData)
         displayChosenMovies(chosenData, chosenMoviesContent);
     }
