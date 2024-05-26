@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function (){
     const bestMoviesContent = document.querySelector('.best__movies--content');
     const expectedMoviesContent = document.querySelector('.expected__movies--content');
     const chosenMoviesContent = document.querySelector('.chosen__movies--content');
+
     // вытаскиваю из локасораджа избранные данные
     let chosenData = LocalStorage.getItem('chosen') || []
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
                 if(items.filmId )  return items.filmId !== movie.filmId
             });
+
             likedClass.classList.remove('liked');
             LocalStorage.setItem('chosen', chosenData);
             chosenMoviesContent.innerHTML = ``;
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function (){
             alert('у вас уже в избарнных есть такой фильм')
             return
         }
+
         movie.liked= true
         chosenData.push(movie);
         LocalStorage.setItem('chosen', chosenData);
@@ -83,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function (){
             if(!response.ok){
                 throw Error('error in fetching data', response)
             }
+
             const responseData = await response.json()
             return responseData;
         }catch (e){
@@ -96,6 +100,9 @@ document.addEventListener('DOMContentLoaded', function (){
             if(!response.ok){
                 throw Error('error in fetching data', response)
             }
+
+
+            
             const responseData = await response.json();
             return responseData;
         }catch (e){

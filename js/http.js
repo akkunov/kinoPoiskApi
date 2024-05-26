@@ -7,7 +7,7 @@ export class Http {
 
     }
     static async getReleases({year, month}){
-        const url = `${baseUrl}releases?year=${year}&month=${month}&page=1`
+        const url = `https://kinopoiskapiunofficial.tech/api/v2.1/films/releases?year=${year}&month=${month}&page=1`
         return  fetch(url,{headers:globalHeader})
     }
     static async getBestMovies({year, month}){
