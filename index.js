@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function (){
     const chosenMoviesContent = document.querySelector('.chosen__movies--content');
     // вытаскиваю из локасораджа избранные данные
     let chosenData = LocalStorage.getItem('chosen') || []
-    timeKillerFunction(premiersMovieContent, '.left', '.right', '.premiers__movies-btn');
 
     // добавляю скролл по кнопке так и по тачу и движению мыши
+    timeKillerFunction(premiersMovieContent, '.left', '.right', '.premiers__movies-btn');
     timeKillerFunction(expectedMoviesContent, '.left', '.right', '.expected__movies-btn');
     timeKillerFunction(bestMoviesContent, '.left', '.right', '.best--movies-btn');
     timeKillerFunction(releaseMovieContent, '.left', '.right', '.release__movies-btn');
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function (){
             const response  = await Http.getPremiers({year:2024, month:"MARCH"})
             if(!response.ok){
                 throw Error('error in fetching data', response)
-                return
             }
 
             const responseData = await response.json();
@@ -83,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function (){
             const response  = await Http.getReleases({year:2024, month:"MARCH"})
             if(!response.ok){
                 throw Error('error in fetching data', response)
-                return
             }
             const responseData = await response.json()
             return responseData;
@@ -97,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function (){
             const response  = await Http.getBestMovies({year:2024, month:"MARCH"})
             if(!response.ok){
                 throw Error('error in fetching data', response)
-                return
             }
             const responseData = await response.json();
             return responseData;
